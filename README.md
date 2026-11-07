@@ -230,3 +230,4 @@ As explicitly required by the project specifications, here is the compliance ver
 - **GitHub**: [github.com/SHARAT-S-UNNITHAN](https://github.com/SHARAT-S-UNNITHAN)
 - **LinkedIn**: [linkedin.com/in/sharat-s-unnithan-b363852a7](https://www.linkedin.com/in/sharat-s-unnithan-b363852a7/)
 - **Academic Credentials**: BCA (College of Applied Science IHRD Mavelikkara, University of Kerala, 2023–2026), MCA (IGNOU, July 2026 cycle).
+

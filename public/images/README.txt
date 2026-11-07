@@ -8,3 +8,4 @@ PROFILE PHOTOGRAPH INSTRUCTIONS FOR SHARAT S UNNITHAN:
    Change `hasCustomImage: false` to `hasCustomImage: true`
 
 3. The website will immediately load and display your real photograph with the optimized Next.js Image component, rounded editorial frame, and responsive layout.
+

@@ -117,9 +117,9 @@ export function ContactForm() {
   };
 
   return (
-    <div className="rounded-2xl bg-surface border border-surface-border p-6 sm:p-8 shadow-xl">
+    <div className="rounded-3xl glass-panel border border-surface-border p-6 sm:p-8 shadow-2xl">
       <div className="mb-6">
-        <h3 className="font-sans font-bold text-xl text-foreground tracking-tight">
+        <h3 className="font-sans font-bold text-2xl text-foreground tracking-tight">
           Project Enquiry
         </h3>
         <p className="text-xs sm:text-sm text-foreground/70 mt-1">
@@ -128,8 +128,8 @@ export function ContactForm() {
       </div>
 
       {status === "success" ? (
-        <div className="p-6 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-center space-y-4 animate-fade-in">
-          <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 mx-auto flex items-center justify-center">
+        <div className="p-8 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 text-center space-y-4 animate-fade-in">
+          <div className="w-12 h-12 rounded-full bg-cyan-500/20 text-cyan-400 mx-auto flex items-center justify-center">
             <CheckCircle2 className="w-7 h-7" />
           </div>
           <h4 className="font-sans font-bold text-lg text-foreground">
@@ -137,14 +137,14 @@ export function ContactForm() {
           </h4>
           <p className="text-xs sm:text-sm text-foreground/80 max-w-md mx-auto leading-relaxed">
             Thank you for reaching out. Your project brief has been forwarded directly to{" "}
-            <span className="font-mono text-emerald-400 font-semibold">{personalData.email}</span>. I will review your requirements and respond promptly.
+            <span className="font-mono text-cyan-400 font-semibold">{personalData.email}</span>. I will review your requirements and respond promptly.
           </p>
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
               href={personalData.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition-colors"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-bold hover:from-cyan-400 hover:to-blue-500 transition-colors shadow-md shadow-cyan-500/20"
             >
               <MessageSquare className="w-3.5 h-3.5" />
               <span>Connect on WhatsApp as well</span>
@@ -152,7 +152,7 @@ export function ContactForm() {
             <button
               type="button"
               onClick={() => setStatus("idle")}
-              className="px-4 py-2 rounded-xl text-xs font-medium border border-surface-border text-foreground/80 hover:bg-surface-muted transition-colors"
+              className="px-4 py-2.5 rounded-xl text-xs font-mono border border-surface-border text-foreground hover:bg-surface-muted transition-colors"
             >
               Send Another Note
             </button>
@@ -199,12 +199,12 @@ export function ContactForm() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Name */}
-            <div className="space-y-1.5">
+            <div className="space-y-1.5 text-left">
               <label
                 htmlFor="name"
                 className="block text-xs font-mono font-medium text-foreground/80"
               >
-                Your Name <span className="text-emerald-400">*</span>
+                Your Name <span className="text-cyan-400">*</span>
               </label>
               <input
                 type="text"
@@ -214,17 +214,17 @@ export function ContactForm() {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="e.g. Rahul Sharma"
-                className="w-full px-3.5 py-2.5 rounded-xl bg-surface-muted border border-surface-border text-sm text-foreground placeholder:text-foreground/35 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-colors"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-surface-muted/60 border border-surface-border text-sm text-foreground placeholder:text-foreground/35 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 transition-colors"
               />
             </div>
 
             {/* Email */}
-            <div className="space-y-1.5">
+            <div className="space-y-1.5 text-left">
               <label
                 htmlFor="email"
                 className="block text-xs font-mono font-medium text-foreground/80"
               >
-                Email Address <span className="text-emerald-400">*</span>
+                Email Address <span className="text-cyan-400">*</span>
               </label>
               <input
                 type="email"
@@ -234,19 +234,19 @@ export function ContactForm() {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="you@domain.com"
-                className="w-full px-3.5 py-2.5 rounded-xl bg-surface-muted border border-surface-border text-sm text-foreground placeholder:text-foreground/35 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-colors"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-surface-muted/60 border border-surface-border text-sm text-foreground placeholder:text-foreground/35 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 transition-colors"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Service Selection */}
-            <div className="space-y-1.5">
+            <div className="space-y-1.5 text-left">
               <label
                 htmlFor="service"
                 className="block text-xs font-mono font-medium text-foreground/80"
               >
-                Service Required <span className="text-emerald-400">*</span>
+                Service Required <span className="text-cyan-400">*</span>
               </label>
               <select
                 id="service"
@@ -254,7 +254,7 @@ export function ContactForm() {
                 required
                 value={formData.service}
                 onChange={handleChange}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-surface-muted border border-surface-border text-sm text-foreground focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-colors"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-surface-muted/60 border border-surface-border text-sm text-foreground focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 transition-colors"
               >
                 <option value="">Select a service...</option>
                 {servicesData.map((svc) => (
@@ -268,7 +268,7 @@ export function ContactForm() {
             </div>
 
             {/* Optional Budget */}
-            <div className="space-y-1.5">
+            <div className="space-y-1.5 text-left">
               <label
                 htmlFor="budget"
                 className="block text-xs font-mono font-medium text-foreground/80"
@@ -280,7 +280,7 @@ export function ContactForm() {
                 name="budget"
                 value={formData.budget}
                 onChange={handleChange}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-surface-muted border border-surface-border text-sm text-foreground focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-colors"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-surface-muted/60 border border-surface-border text-sm text-foreground focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 transition-colors"
               >
                 <option value="">Select budget range...</option>
                 <option value="Under ₹15,000">Under ₹15,000 (Small Landing / Fixes)</option>
@@ -293,12 +293,12 @@ export function ContactForm() {
           </div>
 
           {/* Project Description */}
-          <div className="space-y-1.5">
+          <div className="space-y-1.5 text-left">
             <label
               htmlFor="message"
               className="block text-xs font-mono font-medium text-foreground/80"
             >
-              Project Overview &amp; Requirements <span className="text-emerald-400">*</span>
+              Project Overview &amp; Requirements <span className="text-cyan-400">*</span>
             </label>
             <textarea
               id="message"
@@ -308,7 +308,7 @@ export function ContactForm() {
               value={formData.message}
               onChange={handleChange}
               placeholder="Tell me about your project, target audience, specific features, or timeline..."
-              className="w-full px-3.5 py-2.5 rounded-xl bg-surface-muted border border-surface-border text-sm text-foreground placeholder:text-foreground/35 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-colors resize-y"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-surface-muted/60 border border-surface-border text-sm text-foreground placeholder:text-foreground/35 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 transition-colors resize-y"
             />
           </div>
 
@@ -316,7 +316,7 @@ export function ContactForm() {
             <button
               type="submit"
               disabled={status === "loading"}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold bg-emerald-500 text-slate-950 hover:bg-emerald-400 shadow-md shadow-emerald-500/20 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-bold hover:from-cyan-400 hover:to-blue-500 shadow-lg shadow-cyan-500/25 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
             >
               {status === "loading" ? (
                 <>

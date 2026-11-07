@@ -9,3 +9,4 @@ export default function robots(): MetadataRoute.Robots {
     sitemap: "https://sharatsunnithan.vercel.app/sitemap.xml",
   };
 }
+

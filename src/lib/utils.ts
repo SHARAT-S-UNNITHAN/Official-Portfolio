@@ -8,3 +8,4 @@ export function cn(...inputs: ClassValue[]) {
 export function formatUrl(url: string) {
   return url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
 }
+

@@ -18,6 +18,7 @@ import {
   X,
   Code2,
   User,
+  Home,
 } from "lucide-react";
 import { personalData } from "@/data/personal";
 import { projectsData } from "@/data/projects";
@@ -48,13 +49,12 @@ export function CommandMenu() {
   };
 
   const navItems = [
-    { label: "About Me", href: "/#about", icon: User, group: "Navigation" },
-    { label: "Projects Showcase", href: "/#projects", icon: FolderGit2, group: "Navigation" },
-    { label: "Freelance Services", href: "/#services", icon: Briefcase, group: "Navigation" },
-    { label: "Technical Skills", href: "/#skills", icon: Code2, group: "Navigation" },
-    { label: "Journey & Education", href: "/#journey", icon: GraduationCap, group: "Navigation" },
-    { label: "Certifications", href: "/#certifications", icon: Award, group: "Navigation" },
-    { label: "Contact & Enquiry", href: "/#contact", icon: Mail, group: "Navigation" },
+    { label: "Overview (Home)", href: "/", icon: Home, group: "Navigation" },
+    { label: "About Sharat", href: "/about", icon: User, group: "Navigation" },
+    { label: "Projects Archive", href: "/projects", icon: FolderGit2, group: "Navigation" },
+    { label: "Freelance Services & Scope Estimator", href: "/services", icon: Briefcase, group: "Navigation" },
+    { label: "Experience & Education", href: "/experience", icon: GraduationCap, group: "Navigation" },
+    { label: "Contact Terminal", href: "/contact", icon: Mail, group: "Navigation" },
   ];
 
   const projectItems = projectsData.map((p) => ({
@@ -109,16 +109,16 @@ export function CommandMenu() {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 sm:pt-28 p-4 bg-black/60 backdrop-blur-md animate-fade-in">
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 sm:pt-28 p-4 bg-black/70 backdrop-blur-md animate-fade-in">
       <div
-        className="w-full max-w-xl rounded-2xl bg-surface border border-surface-border shadow-2xl overflow-hidden"
+        className="w-full max-w-xl rounded-3xl glass-panel border border-surface-border shadow-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center gap-3 px-4 py-3 border-b border-surface-border bg-surface-muted/30">
-          <Search className="w-4 h-4 text-emerald-400 shrink-0" />
+        <div className="flex items-center gap-3 px-4 py-3.5 border-b border-surface-border bg-surface-muted/30">
+          <Search className="w-4 h-4 text-cyan-400 shrink-0" />
           <input
             type="text"
-            placeholder="Type a command, jump to a section, or search projects..."
+            placeholder="Type a command, page name, or project..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             autoFocus
@@ -137,8 +137,8 @@ export function CommandMenu() {
 
         <div className="max-h-[380px] overflow-y-auto p-2 divide-y divide-surface-border/40">
           {filteredItems.length === 0 ? (
-            <div className="p-8 text-center text-xs text-foreground/50">
-              No matching commands or projects found.
+            <div className="p-8 text-center text-xs text-foreground/50 font-mono">
+              No matching commands or routes found.
             </div>
           ) : (
             <div className="space-y-1">
@@ -157,10 +157,10 @@ export function CommandMenu() {
                         }
                       })
                     }
-                    className="w-full flex items-center justify-between gap-3 px-3 py-2 rounded-xl text-left text-xs sm:text-sm text-foreground/80 hover:text-foreground hover:bg-surface-muted transition-colors group"
+                    className="w-full flex items-center justify-between gap-3 px-3.5 py-2.5 rounded-xl text-left text-xs sm:text-sm text-foreground/80 hover:text-foreground hover:bg-surface-muted transition-colors group"
                   >
                     <div className="flex items-center gap-3 min-w-0">
-                      <div className="p-1.5 rounded-lg bg-surface-muted border border-surface-border text-foreground/60 group-hover:text-emerald-400 group-hover:border-emerald-500/30 transition-colors">
+                      <div className="p-1.5 rounded-lg bg-surface-muted border border-surface-border text-foreground/60 group-hover:text-cyan-400 group-hover:border-cyan-500/30 transition-colors">
                         <Icon className="w-3.5 h-3.5" />
                       </div>
                       <div className="truncate">
@@ -182,8 +182,8 @@ export function CommandMenu() {
           )}
         </div>
 
-        <div className="flex items-center justify-between px-4 py-2 border-t border-surface-border bg-surface-muted/20 text-[11px] text-foreground/50 font-mono">
-          <span>Quick Navigator</span>
+        <div className="flex items-center justify-between px-4 py-2.5 border-t border-surface-border bg-surface-muted/20 text-[11px] text-foreground/50 font-mono">
+          <span>Command Navigator</span>
           <span>Tip: Press ⌘K / Ctrl+K anytime</span>
         </div>
       </div>

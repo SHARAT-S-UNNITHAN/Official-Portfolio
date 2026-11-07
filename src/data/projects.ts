@@ -162,3 +162,4 @@ export const projectsData: Project[] = [
     accentColor: "#06b6d4",
   },
 ];
+

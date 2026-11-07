@@ -43,3 +43,4 @@ export const personalData = {
   freelanceSubtext:
     "Helping individuals and businesses turn ideas into practical digital solutions under my personal professional stewardship.",
 };
+
