@@ -37,26 +37,26 @@ export function ServiceCard({ service, onSelectService }: ServiceCardProps) {
   };
 
   return (
-    <div className="relative rounded-3xl glass-panel border border-surface-border p-6 sm:p-7 hover:border-purple-500/40 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/10 flex flex-col justify-between group text-left">
+    <div className="relative rounded-3xl glass-panel border border-surface-border p-6 sm:p-7 hover:border-accent/40 transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10 flex flex-col justify-between group text-left">
       {/* Top Header */}
       <div>
         <div className="flex items-center justify-between gap-3 mb-5">
-          <div className="w-12 h-12 rounded-2xl bg-surface-muted/60 border border-surface-border flex items-center justify-center text-purple-400 group-hover:scale-105 group-hover:border-purple-500/40 transition-transform">
+          <div className="w-12 h-12 rounded-2xl bg-surface-muted/60 border border-surface-border flex items-center justify-center text-accent group-hover:scale-105 group-hover:border-accent/40 transition-transform">
             <Icon className="w-6 h-6" />
           </div>
           <div className="flex items-center gap-2">
             {service.badge && (
-              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-purple-500/15 text-purple-300 border border-purple-500/30">
+              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-accent/15 text-accent border border-accent/30">
                 {service.badge}
               </span>
             )}
-            <span className="font-mono text-sm font-bold text-foreground/40">
+            <span className="font-mono text-sm font-bold text-subtle-foreground">
               {service.number}
             </span>
           </div>
         </div>
 
-        <h3 className="font-sans font-bold text-lg sm:text-xl text-foreground tracking-tight mb-2 group-hover:text-purple-300 transition-colors">
+        <h3 className="font-sans font-bold text-lg sm:text-xl text-foreground tracking-tight mb-2 group-hover:text-accent transition-colors">
           {service.title}
         </h3>
 
@@ -66,7 +66,7 @@ export function ServiceCard({ service, onSelectService }: ServiceCardProps) {
 
         {/* Deliverables Checklist */}
         <div className="space-y-2 mb-6">
-          <span className="font-mono text-[11px] uppercase tracking-wider text-foreground/50 block">
+          <span className="font-mono text-[11px] uppercase tracking-wider text-subtle-foreground block">
             Verified Deliverables
           </span>
           <ul className="space-y-1.5">
@@ -75,7 +75,7 @@ export function ServiceCard({ service, onSelectService }: ServiceCardProps) {
                 key={idx}
                 className="flex items-start gap-2 text-xs text-foreground/80 leading-normal"
               >
-                <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 mt-0.5 shrink-0" />
+                <CheckCircle2 className="w-3.5 h-3.5 text-accent mt-0.5 shrink-0" />
                 <span>{item}</span>
               </li>
             ))}
@@ -88,7 +88,7 @@ export function ServiceCard({ service, onSelectService }: ServiceCardProps) {
         <Link
           href={`/contact?service=${encodeURIComponent(service.title)}`}
           onClick={handleEnquire}
-          className="w-full inline-flex items-center justify-between px-4 py-2.5 rounded-xl text-xs font-semibold glass-panel border border-surface-border text-foreground hover:text-cyan-400 hover:border-cyan-500/40 transition-all duration-200 group/btn"
+          className="w-full inline-flex items-center justify-between px-4 py-2.5 rounded-xl text-xs font-semibold glass-panel border border-surface-border text-foreground hover:text-accent hover:border-accent/40 transition-all duration-200 group/btn"
         >
           <span>Enquire for {service.title}</span>
           <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-1" />

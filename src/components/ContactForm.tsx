@@ -74,27 +74,26 @@ export function ContactForm() {
     setErrorMessage("");
 
     try {
-      // Submitting via FormSubmit AJAX endpoint to verified email
-      const response = await fetch(`https://formsubmit.co/ajax/${personalData.email}`, {
+      // Server-side API route relays the enquiry to Telegram.
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
         body: JSON.stringify({
-          _subject: `New Project Enquiry from ${formData.name.trim()} [Portfolio]`,
           name: formData.name.trim(),
           email: formData.email.trim(),
           service: formData.service,
-          budget: formData.budget || "Flexible / Not specified",
+          budget: formData.budget,
           message: formData.message.trim(),
-          _template: "table",
+          _honey: formData._honey,
         }),
       });
 
       const data = await response.json();
 
-      if (response.ok && data.success !== "false") {
+      if (response.ok && data.success) {
         setStatus("success");
         setFormData({
           name: "",
@@ -111,13 +110,13 @@ export function ContactForm() {
       console.error("Form transmission error:", err);
       setStatus("error");
       setErrorMessage(
-        "Direct API dispatch encountered an interruption. You can reach out immediately via WhatsApp or direct email below."
+        "The enquiry could not be delivered right now. You can reach out immediately via WhatsApp or direct email below."
       );
     }
   };
 
   return (
-    <div className="rounded-3xl glass-panel border border-surface-border p-6 sm:p-8 shadow-2xl">
+    <div className="rounded-3xl glass-panel beast-border p-6 sm:p-8 shadow-2xl">
       <div className="mb-6">
         <h3 className="font-sans font-bold text-2xl text-foreground tracking-tight">
           Project Enquiry
@@ -128,23 +127,23 @@ export function ContactForm() {
       </div>
 
       {status === "success" ? (
-        <div className="p-8 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 text-center space-y-4 animate-fade-in">
-          <div className="w-12 h-12 rounded-full bg-cyan-500/20 text-cyan-400 mx-auto flex items-center justify-center">
+        <div className="p-8 rounded-2xl bg-success/10 border border-success/30 text-center space-y-4 animate-fade-in">
+          <div className="w-12 h-12 rounded-full bg-success/20 text-success mx-auto flex items-center justify-center">
             <CheckCircle2 className="w-7 h-7" />
           </div>
           <h4 className="font-sans font-bold text-lg text-foreground">
             Enquiry Dispatched Successfully!
           </h4>
           <p className="text-xs sm:text-sm text-foreground/80 max-w-md mx-auto leading-relaxed">
-            Thank you for reaching out. Your project brief has been forwarded directly to{" "}
-            <span className="font-mono text-cyan-400 font-semibold">{personalData.email}</span>. I will review your requirements and respond promptly.
+            Thank you for reaching out. Your project brief has been delivered directly to{" "}
+            <span className="font-mono text-success font-semibold">my secure enquiry inbox</span>. I will review your requirements and respond within 24 hours.
           </p>
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
               href={personalData.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-bold hover:from-cyan-400 hover:to-blue-500 transition-colors shadow-md shadow-cyan-500/20"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-gradient-to-r from-accent to-accent-secondary text-accent-foreground font-bold hover:from-accent-secondary hover:to-accent-highlight transition-colors shadow-md shadow-accent/20"
             >
               <MessageSquare className="w-3.5 h-3.5" />
               <span>Connect on WhatsApp as well</span>
@@ -172,14 +171,14 @@ export function ContactForm() {
           />
 
           {status === "error" && (
-            <div className="p-3.5 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs flex items-start gap-2.5 animate-fade-in">
+            <div className="p-3.5 rounded-xl bg-danger/10 border border-danger/30 text-danger text-xs flex items-start gap-2.5 animate-fade-in">
               <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
               <div className="space-y-1">
                 <p className="font-medium">{errorMessage}</p>
                 <div className="pt-1 flex gap-3 text-[11px] font-mono">
                   <a
                     href={`mailto:${personalData.email}`}
-                    className="underline hover:text-red-300"
+                    className="underline hover:text-danger"
                   >
                     Open Mail Client
                   </a>
@@ -188,7 +187,7 @@ export function ContactForm() {
                     href={personalData.whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline hover:text-red-300"
+                    className="underline hover:text-danger"
                   >
                     Message on WhatsApp
                   </a>
@@ -204,7 +203,7 @@ export function ContactForm() {
                 htmlFor="name"
                 className="block text-xs font-mono font-medium text-foreground/80"
               >
-                Your Name <span className="text-cyan-400">*</span>
+                Your Name <span className="text-accent">*</span>
               </label>
               <input
                 type="text"
@@ -214,7 +213,7 @@ export function ContactForm() {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="e.g. Rahul Sharma"
-                className="w-full px-3.5 py-2.5 rounded-xl bg-surface-muted/60 border border-surface-border text-sm text-foreground placeholder:text-foreground/35 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 transition-colors"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-surface-muted/60 border beast-border text-sm text-foreground placeholder:text-subtle-foreground focus:outline-none focus:beast-border focus:ring-1 focus:ring-accent/50 transition-colors"
               />
             </div>
 
@@ -224,7 +223,7 @@ export function ContactForm() {
                 htmlFor="email"
                 className="block text-xs font-mono font-medium text-foreground/80"
               >
-                Email Address <span className="text-cyan-400">*</span>
+                Email Address <span className="text-accent">*</span>
               </label>
               <input
                 type="email"
@@ -234,7 +233,7 @@ export function ContactForm() {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="you@domain.com"
-                className="w-full px-3.5 py-2.5 rounded-xl bg-surface-muted/60 border border-surface-border text-sm text-foreground placeholder:text-foreground/35 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 transition-colors"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-surface-muted/60 border beast-border text-sm text-foreground placeholder:text-subtle-foreground focus:outline-none focus:beast-border focus:ring-1 focus:ring-accent/50 transition-colors"
               />
             </div>
           </div>
@@ -246,7 +245,7 @@ export function ContactForm() {
                 htmlFor="service"
                 className="block text-xs font-mono font-medium text-foreground/80"
               >
-                Service Required <span className="text-cyan-400">*</span>
+                Service Required <span className="text-accent">*</span>
               </label>
               <select
                 id="service"
@@ -254,7 +253,7 @@ export function ContactForm() {
                 required
                 value={formData.service}
                 onChange={handleChange}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-surface-muted/60 border border-surface-border text-sm text-foreground focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 transition-colors"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-surface-muted/60 border beast-border text-sm text-foreground focus:outline-none focus:beast-border focus:ring-1 focus:ring-accent/50 transition-colors"
               >
                 <option value="">Select a service...</option>
                 {servicesData.map((svc) => (
@@ -264,6 +263,12 @@ export function ContactForm() {
                 ))}
                 <option value="General Consultation">General Project Consultation</option>
                 <option value="Other">Other Software / Technical Need</option>
+                {/* Scope passed from the estimator / custom consultation links */}
+                {formData.service &&
+                  !servicesData.some((svc) => svc.title === formData.service) &&
+                  !["General Consultation", "Other"].includes(formData.service) && (
+                    <option value={formData.service}>{formData.service}</option>
+                  )}
               </select>
             </div>
 
@@ -280,7 +285,7 @@ export function ContactForm() {
                 name="budget"
                 value={formData.budget}
                 onChange={handleChange}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-surface-muted/60 border border-surface-border text-sm text-foreground focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 transition-colors"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-surface-muted/60 border beast-border text-sm text-foreground focus:outline-none focus:beast-border focus:ring-1 focus:ring-accent/50 transition-colors"
               >
                 <option value="">Select budget range...</option>
                 <option value="Under ₹15,000">Under ₹15,000 (Small Landing / Fixes)</option>
@@ -298,7 +303,7 @@ export function ContactForm() {
               htmlFor="message"
               className="block text-xs font-mono font-medium text-foreground/80"
             >
-              Project Overview &amp; Requirements <span className="text-cyan-400">*</span>
+              Project Overview &amp; Requirements <span className="text-accent">*</span>
             </label>
             <textarea
               id="message"
@@ -308,7 +313,7 @@ export function ContactForm() {
               value={formData.message}
               onChange={handleChange}
               placeholder="Tell me about your project, target audience, specific features, or timeline..."
-              className="w-full px-3.5 py-2.5 rounded-xl bg-surface-muted/60 border border-surface-border text-sm text-foreground placeholder:text-foreground/35 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 transition-colors resize-y"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-surface-muted/60 border border-surface-border text-sm text-foreground placeholder:text-subtle-foreground focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/50 transition-colors resize-y"
             />
           </div>
 
@@ -316,7 +321,7 @@ export function ContactForm() {
             <button
               type="submit"
               disabled={status === "loading"}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-bold hover:from-cyan-400 hover:to-blue-500 shadow-lg shadow-cyan-500/25 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold bg-gradient-to-r from-accent to-accent-secondary text-accent-foreground font-bold hover:from-accent-secondary hover:to-accent-highlight shadow-lg shadow-accent/25 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
             >
               {status === "loading" ? (
                 <>
@@ -331,8 +336,8 @@ export function ContactForm() {
               )}
             </button>
 
-            <span className="text-[11px] font-mono text-foreground/50 text-center sm:text-right">
-              Powered by secure FormSubmit • Zero spam guaranteed
+            <span className="text-[11px] font-mono text-subtle-foreground text-center sm:text-right">
+              Delivered securely via Telegram • Zero spam guaranteed
             </span>
           </div>
         </form>

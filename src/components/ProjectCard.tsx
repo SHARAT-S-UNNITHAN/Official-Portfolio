@@ -17,38 +17,38 @@ export function ProjectCard({ project }: ProjectCardProps) {
   > = {
     Completed: {
       label: "Completed",
-      bg: "bg-emerald-500/10 border-emerald-500/30",
-      text: "text-emerald-400",
-      dot: "bg-emerald-400",
+      bg: "bg-success/10 border-success/30",
+      text: "text-success",
+      dot: "bg-success",
     },
     "In Development": {
       label: "In Development",
-      bg: "bg-amber-500/10 border-amber-500/30",
-      text: "text-amber-400",
-      dot: "bg-amber-400 animate-pulse",
+      bg: "bg-warning/10 border-warning/30",
+      text: "text-warning",
+      dot: "bg-warning animate-pulse",
     },
     Concept: {
       label: "System Concept",
-      bg: "bg-cyan-500/10 border-cyan-500/30",
-      text: "text-cyan-400",
-      dot: "bg-cyan-400",
+      bg: "bg-accent/10 border-accent/30",
+      text: "text-accent",
+      dot: "bg-accent",
     },
     Archived: {
       label: "Archived",
-      bg: "bg-slate-500/10 border-slate-500/30",
-      text: "text-slate-400",
-      dot: "bg-slate-400",
+      bg: "bg-surface-muted border-surface-border",
+      text: "text-muted-foreground",
+      dot: "bg-subtle-foreground",
     },
   };
 
   const status = statusStyles[project.status];
 
   return (
-    <div className="group relative rounded-3xl glass-panel border border-surface-border hover:border-cyan-500/40 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/10 flex flex-col overflow-hidden text-left">
+    <div className="group relative rounded-3xl glass-panel border border-surface-border hover:border-accent/40 transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10 flex flex-col overflow-hidden text-left">
       {/* Visual Header / Illustration */}
       <Link
         href={`/projects/${project.slug}`}
-        className="relative block w-full aspect-[16/10] overflow-hidden bg-black/40 border-b border-surface-border/80 focus:outline-none"
+        className="relative block w-full aspect-[16/10] overflow-hidden bg-surface-muted border-b border-surface-border/80 focus:outline-none"
       >
         <Image
           src={project.image}
@@ -77,7 +77,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <div className="space-y-3">
           <Link
             href={`/projects/${project.slug}`}
-            className="group-hover:text-cyan-400 transition-colors focus:outline-none block"
+            className="group-hover:text-accent transition-colors focus:outline-none block"
           >
             <h3 className="font-sans font-bold text-lg text-foreground tracking-tight leading-snug">
               {project.title}
@@ -99,7 +99,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               </span>
             ))}
             {project.technologies.length > 4 && (
-              <span className="px-1.5 py-0.5 rounded-md text-[10px] font-mono text-foreground/50 border border-surface-border/60">
+              <span className="px-1.5 py-0.5 rounded-md text-[10px] font-mono text-subtle-foreground border border-surface-border/60">
                 +{project.technologies.length - 4}
               </span>
             )}
@@ -110,7 +110,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <div className="pt-5 mt-4 border-t border-surface-border/60 flex items-center justify-between gap-3 text-xs">
           <Link
             href={`/projects/${project.slug}`}
-            className="inline-flex items-center gap-1.5 font-semibold text-cyan-400 hover:text-cyan-300 transition-colors group/link font-mono"
+            className="inline-flex items-center gap-1.5 font-semibold text-accent hover:text-accent transition-colors group/link font-mono"
           >
             <span>Read Case Study</span>
             <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
@@ -123,7 +123,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`View ${project.title} on GitHub`}
-                className="p-1.5 rounded-xl border border-surface-border bg-surface-muted text-foreground/60 hover:text-foreground hover:border-cyan-500/40 transition-colors"
+                className="p-1.5 rounded-xl border border-surface-border bg-surface-muted text-foreground/60 hover:text-foreground hover:border-accent/40 transition-colors"
               >
                 <Github className="w-3.5 h-3.5" />
               </a>
@@ -134,7 +134,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`View live demo of ${project.title}`}
-                className="p-1.5 rounded-xl border border-surface-border bg-surface-muted text-foreground/60 hover:text-foreground hover:border-cyan-500/40 transition-colors"
+                className="p-1.5 rounded-xl border border-surface-border bg-surface-muted text-foreground/60 hover:text-foreground hover:border-accent/40 transition-colors"
               >
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>

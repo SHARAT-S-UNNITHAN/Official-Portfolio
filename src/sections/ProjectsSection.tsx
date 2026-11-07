@@ -27,7 +27,7 @@ export function ProjectsSection() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-3">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-accent/10 text-accent border border-accent/20 mb-3">
               <FolderGit2 className="w-3.5 h-3.5" />
               <span>02 // Project Portfolio</span>
             </div>
@@ -42,8 +42,8 @@ export function ProjectsSection() {
 
         {/* Category Filter Pills */}
         <div className="flex flex-wrap items-center gap-2 mb-10 pb-2">
-          <div className="flex items-center gap-1.5 text-xs font-mono text-foreground/50 mr-2">
-            <Filter className="w-3 h-3 text-emerald-400" />
+          <div className="flex items-center gap-1.5 text-xs font-mono text-subtle-foreground mr-2">
+            <Filter className="w-3 h-3 text-accent" />
             <span>Filter:</span>
           </div>
 
@@ -54,8 +54,8 @@ export function ProjectsSection() {
               onClick={() => setSelectedCategory(category)}
               className={`px-3.5 py-1.5 rounded-full text-xs font-mono transition-all duration-200 ${
                 selectedCategory === category
-                  ? "bg-emerald-500 text-slate-950 font-bold shadow-md shadow-emerald-500/20"
-                  : "bg-surface border border-surface-border text-foreground/75 hover:border-emerald-500/30 hover:text-foreground"
+                  ? "bg-accent text-accent-foreground font-bold shadow-md shadow-accent/20"
+                  : "bg-surface border border-surface-border text-foreground/75 hover:border-accent/30 hover:text-foreground"
               }`}
             >
               {category}
@@ -76,7 +76,7 @@ export function ProjectsSection() {
           <p className="text-xs sm:text-sm text-foreground/70">
             Every project has a complete technical case study detailing its problem statement, solution architecture, my role, and implemented modules.
           </p>
-          <p className="text-xs font-mono text-emerald-400">
+          <p className="text-xs font-mono text-accent">
             Click on any card above to explore full architectural breakdowns.
           </p>
         </div>

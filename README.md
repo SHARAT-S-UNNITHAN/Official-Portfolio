@@ -23,7 +23,7 @@ The application harmonizes two interconnected professional identities:
 - **Visual Design Identity**: Inspired by modern editorial aesthetics ([PixelSync Studio](https://pixelsyncstudio.vercel.app/)), featuring deep charcoal surfaces (`#080a0c`), fine borders, sophisticated emerald accents (`#10b981`), and minimal distractions.
 - **Icons**: [Lucide React](https://lucide.dev/)
 - **Micro-Interactions**: Custom CSS transitions, scroll progress tracking, and interactive command palette (`⌘K` / `Ctrl+K`)
-- **Contact Pipeline**: Secure [FormSubmit](https://formsubmit.co/) AJAX transmission with honeypot anti-spam protection, paired with instant WhatsApp and direct email fallbacks.
+- **Contact Pipeline**: Server-side Telegram Bot API route (`/api/contact`) with validation, rate limiting, and honeypot anti-spam — plus instant WhatsApp and direct email fallbacks. Credentials stay in environment variables, so it deploys cleanly to Vercel.
 - **SEO & Discovery**: Dynamic OpenGraph previews, semantic HTML5, `robots.txt`, and automated `sitemap.xml`.
 
 ---
@@ -49,6 +49,9 @@ The application harmonizes two interconnected professional identities:
 │   │   ├── globals.css                   # Theme definitions, custom scrollbars, typography
 │   │   ├── layout.tsx                    # Root layout, theme wrapper, SEO metadata, navbar & footer
 │   │   ├── page.tsx                      # Primary homepage assembling all narrative sections
+│   │   ├── api/
+│   │   │   └── contact/
+│   │   │       └── route.ts              # Telegram bot delivery endpoint for project enquiries
 │   │   ├── not-found.tsx                 # Bespoke 404 error page
 │   │   ├── robots.ts                     # Automated robots.txt generator
 │   │   ├── sitemap.ts                    # Automated sitemap.xml generator
@@ -58,13 +61,13 @@ The application harmonizes two interconnected professional identities:
 │   ├── components/
 │   │   ├── BackToTop.tsx                 # Floating smooth scroll-to-top button
 │   │   ├── CommandMenu.tsx               # ⌘K / Ctrl+K keyboard command palette
-│   │   ├── ContactForm.tsx               # Working project enquiry form (FormSubmit + validation)
+│   │   ├── ContactForm.tsx               # Project enquiry form (validation + Telegram delivery)
 │   │   ├── Footer.tsx                    # Verified channels, location, credentials, copyright
 │   │   ├── Navbar.tsx                    # Responsive navigation, theme switcher, mobile drawer
 │   │   ├── ProfilePlaceholder.tsx        # High-end geometric avatar fallback + setup popover
 │   │   ├── ProjectCard.tsx               # Reusable project card with status pills and tags
 │   │   ├── ResumeModal.tsx               # Download resume handler & placeholder modal
-│   │   ├── ScrollProgress.tsx            # Top emerald scroll progress bar
+│   │   ├── ScrollProgress.tsx            # Top gold scroll progress bar
 │   │   ├── ServiceCard.tsx               # Freelance service card with deliverables & enquiry CTA
 │   │   ├── ThemeProvider.tsx             # Persistent dark/light mode state provider
 │   │   └── ThemeToggle.tsx               # Animated sun/moon switcher
@@ -170,14 +173,42 @@ Open [`src/data/services.ts`](./src/data/services.ts):
 - Update descriptions, deliverables, or badges.
 - Any change automatically updates the service cards and contact form dropdown options.
 
-### F. Configuring FormSubmit for Enquiries
-The contact form in [`src/components/ContactForm.tsx`](./src/components/ContactForm.tsx) dispatches submissions directly to:
-```typescript
-https://formsubmit.co/ajax/sharatsunnithan3@gmail.com
+### F. Connecting the Enquiry Form to Your Telegram Bot
+The contact form posts to [`src/app/api/contact/route.ts`](./src/app/api/contact/route.ts), which forwards each enquiry to your private Telegram chat using the official Bot API. The bot token never reaches the browser.
+
+**1. Create the bot**
+- Open Telegram and message [@BotFather](https://t.me/BotFather).
+- Send `/newbot`, choose a name and username.
+- Copy the **HTTP API token** (looks like `123456789:AAE...`).
+
+**2. Find your chat ID**
+- Send any message to your new bot (or add it to a private group and send a message there).
+- Open this URL in your browser, replacing the token:
+  `https://api.telegram.org/bot<YOUR_TOKEN>/getUpdates`
+- Copy `result[0].message.chat.id`. Group IDs start with a minus sign (`-100...`).
+
+**3. Configure the environment**
+
+Create `.env.local` in the project root (already excluded from Git):
+
+```env
+TELEGRAM_BOT_TOKEN="123456789:AAE..."
+TELEGRAM_CHAT_ID="123456789"
 ```
-- The very first time someone submits an enquiry through your live deployed site, FormSubmit will send a confirmation activation email to `sharatsunnithan3@gmail.com`.
-- Simply click **"Activate Form"** in that email once.
-- From then on, every client enquiry will land straight in your Gmail inbox with no server maintenance or paid backend required!
+
+Use `.env.example` as the template. Multiple recipients are supported with a comma-separated list, e.g. `TELEGRAM_CHAT_ID="123456789,-100987654321"`.
+
+**4. Add the same variables on Vercel**
+- Project → **Settings** → **Environment Variables**.
+- Add `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` for **Production**, **Preview**, and **Development**.
+- Redeploy so the new variables take effect.
+
+**5. Test**
+Submit the form once. The message should arrive in Telegram within a few seconds, containing the sender's name, email (tap-to-reply), selected service, budget, and project description.
+
+> **Security:** never commit the token. If it is ever exposed, revoke it with `/revoke` in BotFather and update the environment variables.
+>
+> **Fallback:** if Telegram is unreachable or the variables are missing, the form shows an error and offers direct WhatsApp/email links instead.
 
 ---
 
@@ -207,8 +238,9 @@ As explicitly required by the project specifications, here is the compliance ver
 2. Log in to [Vercel](https://vercel.com/) with your GitHub account.
 3. Click **"Add New..."** > **"Project"** and select `official-portfolio`.
 4. Preset: Select **Next.js** (Root directory: `./`).
-5. Click **"Deploy"**.
-6. Vercel will build and assign you a free production subdomain (e.g., `sharat-s-unnithan.vercel.app`).
+5. Add the environment variables under **Settings → Environment Variables** (see section F): `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID`.
+6. Click **"Deploy"**.
+7. Vercel will build and assign you a free production subdomain (e.g., `sharat-s-unnithan.vercel.app`).
 
 ---
 

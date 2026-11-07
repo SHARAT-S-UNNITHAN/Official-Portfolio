@@ -26,17 +26,17 @@ export default function ContactPage() {
         {/* Header */}
         <div className="space-y-4">
           <div className="flex flex-wrap items-center gap-3">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-white/5 text-zinc-300 border border-white/10">
-              <Mail className="w-3.5 h-3.5 text-zinc-400" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-foreground/5 text-foreground/80 border border-surface-border">
+              <Mail className="w-3.5 h-3.5 text-muted-foreground" />
               <span>05 // Communication Terminal</span>
             </div>
             <LiveClock />
           </div>
 
-          <h1 className="font-sans font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight">
+          <h1 className="font-sans font-extrabold text-4xl sm:text-5xl lg:text-6xl text-foreground tracking-tight">
             Initiate Contact or Transmit a Project Brief
           </h1>
-          <p className="text-base sm:text-lg text-zinc-400 leading-relaxed max-w-3xl">
+          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl">
             Whether you have a specific software project in mind, need independent freelance development, or wish to connect for professional opportunities, feel free to reach out.
           </p>
         </div>
@@ -47,67 +47,67 @@ export default function ContactPage() {
             {/* Direct Cards */}
             <a
               href={`mailto:${personalData.email}`}
-              className="p-5 rounded-2xl glass-panel border border-white/10 hover:border-white/20 transition-all duration-200 flex items-center justify-between group shadow-sm"
+              className="p-5 rounded-2xl glass-panel border border-surface-border hover:border-accent/25 transition-all duration-200 flex items-center justify-between group shadow-sm"
             >
               <div className="flex items-center gap-4">
-                <div className="w-11 h-11 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-white group-hover:scale-105 transition-transform">
+                <div className="w-11 h-11 rounded-xl bg-foreground/[0.05] border border-surface-border flex items-center justify-center text-foreground group-hover:scale-105 transition-transform">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-[11px] font-mono text-zinc-500 block">
+                  <span className="text-[11px] font-mono text-subtle-foreground block">
                     Direct Email
                   </span>
-                  <span className="font-sans font-semibold text-sm text-white group-hover:text-zinc-200 transition-colors break-all">
+                  <span className="font-sans font-semibold text-sm text-foreground group-hover:text-foreground transition-colors break-all">
                     {personalData.email}
                   </span>
                 </div>
               </div>
-              <ArrowUpRight className="w-4 h-4 text-zinc-500 group-hover:text-white transition-colors shrink-0 ml-2" />
+              <ArrowUpRight className="w-4 h-4 text-subtle-foreground group-hover:text-foreground transition-colors shrink-0 ml-2" />
             </a>
 
             <a
               href={personalData.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-5 rounded-2xl glass-panel border border-white/10 hover:border-white/20 transition-all duration-200 flex items-center justify-between group shadow-sm"
+              className="p-5 rounded-2xl glass-panel border border-surface-border hover:border-accent/25 transition-all duration-200 flex items-center justify-between group shadow-sm"
             >
               <div className="flex items-center gap-4">
-                <div className="w-11 h-11 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-white group-hover:scale-105 transition-transform">
+                <div className="w-11 h-11 rounded-xl bg-foreground/[0.05] border border-surface-border flex items-center justify-center text-foreground group-hover:scale-105 transition-transform">
                   <MessageSquare className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-[11px] font-mono text-zinc-500 block">
+                  <span className="text-[11px] font-mono text-subtle-foreground block">
                     WhatsApp Direct Chat
                   </span>
-                  <span className="font-sans font-semibold text-sm text-white group-hover:text-zinc-200 transition-colors">
+                  <span className="font-sans font-semibold text-sm text-foreground group-hover:text-foreground transition-colors">
                     {personalData.phone}
                   </span>
                 </div>
               </div>
-              <ArrowUpRight className="w-4 h-4 text-zinc-500 group-hover:text-white transition-colors shrink-0 ml-2" />
+              <ArrowUpRight className="w-4 h-4 text-subtle-foreground group-hover:text-foreground transition-colors shrink-0 ml-2" />
             </a>
 
             {/* Location Card */}
-            <div className="p-5 rounded-2xl glass-panel border border-white/10 flex items-center gap-4 shadow-sm">
-              <div className="w-11 h-11 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-white">
+            <div className="p-5 rounded-2xl glass-panel border border-surface-border flex items-center gap-4 shadow-sm">
+              <div className="w-11 h-11 rounded-xl bg-foreground/[0.05] border border-surface-border flex items-center justify-center text-foreground">
                 <MapPin className="w-5 h-5" />
               </div>
               <div>
-                <span className="text-[11px] font-mono text-zinc-500 block">
+                <span className="text-[11px] font-mono text-subtle-foreground block">
                   Operating Hub
                 </span>
-                <span className="font-sans font-semibold text-sm text-white">
+                <span className="font-sans font-semibold text-sm text-foreground">
                   {personalData.location}
                 </span>
-                <span className="text-xs text-zinc-400 block font-mono">
+                <span className="text-xs text-muted-foreground block font-mono">
                   Kerala, India (UTC+5:30) • Remote Ready
                 </span>
               </div>
             </div>
 
             {/* Social Networks */}
-            <div className="p-5 rounded-2xl glass-panel border border-white/10 space-y-3">
-              <span className="text-xs font-mono uppercase tracking-wider text-zinc-500 block">
+            <div className="p-5 rounded-2xl glass-panel border border-surface-border space-y-3">
+              <span className="text-xs font-mono uppercase tracking-wider text-subtle-foreground block">
                 Professional Profiles
               </span>
               <div className="grid grid-cols-2 gap-2.5">
@@ -115,10 +115,10 @@ export default function ContactPage() {
                   href={personalData.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 rounded-xl bg-white/[0.03] border border-white/10 hover:border-white/25 flex items-center justify-between text-xs font-semibold text-white hover:text-zinc-200 transition-colors"
+                  className="p-3 rounded-xl bg-foreground/[0.04] border border-surface-border hover:border-accent/30 flex items-center justify-between text-xs font-semibold text-foreground hover:text-foreground transition-colors"
                 >
                   <span className="flex items-center gap-2">
-                    <Github className="w-4 h-4 text-zinc-300" />
+                    <Github className="w-4 h-4 text-foreground/80" />
                     <span>GitHub</span>
                   </span>
                   <ArrowUpRight className="w-3.5 h-3.5 opacity-60" />
@@ -128,10 +128,10 @@ export default function ContactPage() {
                   href={personalData.linkedinUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 rounded-xl bg-white/[0.03] border border-white/10 hover:border-white/25 flex items-center justify-between text-xs font-semibold text-white hover:text-zinc-200 transition-colors"
+                  className="p-3 rounded-xl bg-foreground/[0.04] border border-surface-border hover:border-accent/30 flex items-center justify-between text-xs font-semibold text-foreground hover:text-foreground transition-colors"
                 >
                   <span className="flex items-center gap-2">
-                    <Linkedin className="w-4 h-4 text-zinc-300" />
+                    <Linkedin className="w-4 h-4 text-foreground/80" />
                     <span>LinkedIn</span>
                   </span>
                   <ArrowUpRight className="w-3.5 h-3.5 opacity-60" />
@@ -140,8 +140,8 @@ export default function ContactPage() {
             </div>
 
             {/* Response Promise */}
-            <div className="p-4 rounded-xl glass-panel border border-white/10 flex items-center gap-3 text-xs text-zinc-400 font-mono">
-              <Clock className="w-4 h-4 text-zinc-300 shrink-0" />
+            <div className="p-4 rounded-xl glass-panel border border-surface-border flex items-center gap-3 text-xs text-muted-foreground font-mono">
+              <Clock className="w-4 h-4 text-foreground/80 shrink-0" />
               <span>Turnaround: Verified responses within 24 hours.</span>
             </div>
           </div>
@@ -150,7 +150,7 @@ export default function ContactPage() {
           <div className="lg:col-span-7">
             <Suspense
               fallback={
-                <div className="p-8 rounded-2xl glass-panel text-center text-xs text-zinc-500">
+                <div className="p-8 rounded-2xl glass-panel text-center text-xs text-subtle-foreground">
                   Loading enquiry terminal...
                 </div>
               }

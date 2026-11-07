@@ -48,14 +48,14 @@ export default function ServicesPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         {/* Header */}
         <div className="space-y-4">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-white/5 text-zinc-300 border border-white/10">
-            <Briefcase className="w-3.5 h-3.5 text-zinc-400" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-foreground/5 text-foreground/80 border border-surface-border">
+            <Briefcase className="w-3.5 h-3.5 text-muted-foreground" />
             <span>03 // Independent Freelance Practice</span>
           </div>
-          <h1 className="font-sans font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight">
+          <h1 className="font-sans font-extrabold text-4xl sm:text-5xl lg:text-6xl text-foreground tracking-tight">
             {personalData.freelanceTagline}
           </h1>
-          <p className="text-base sm:text-lg text-zinc-400 leading-relaxed max-w-3xl">
+          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl">
             {personalData.freelanceSubtext} Direct, personalized software development without bloated agency markups or outsourced communication.
           </p>
         </div>
@@ -67,11 +67,11 @@ export default function ServicesPage() {
 
         {/* All 5 Services Grid */}
         <div className="space-y-6">
-          <div className="border-b border-white/10 pb-3">
-            <h2 className="font-sans font-bold text-2xl sm:text-3xl text-white tracking-tight">
+          <div className="border-b border-surface-border pb-3">
+            <h2 className="font-sans font-bold text-2xl sm:text-3xl text-foreground tracking-tight">
               Verified Freelance Offerings
             </h2>
-            <p className="text-xs sm:text-sm text-zinc-400 font-mono mt-1">
+            <p className="text-xs sm:text-sm text-muted-foreground font-mono mt-1">
               Transparent deliverables and direct developer accountability for every project.
             </p>
           </div>
@@ -82,28 +82,28 @@ export default function ServicesPage() {
             ))}
 
             {/* Custom Scope Card */}
-            <div className="rounded-3xl glass-panel border border-white/10 p-6 sm:p-7 flex flex-col justify-between shadow-lg">
+            <div className="rounded-3xl glass-panel border border-surface-border p-6 sm:p-7 flex flex-col justify-between shadow-lg">
               <div className="space-y-4">
-                <div className="w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-white">
+                <div className="w-12 h-12 rounded-2xl bg-foreground/[0.05] border border-surface-border flex items-center justify-center text-foreground">
                   <Sparkles className="w-6 h-6" />
                 </div>
-                <h3 className="font-sans font-bold text-lg text-white">
+                <h3 className="font-sans font-bold text-lg text-foreground">
                   Custom Software Needs?
                 </h3>
-                <p className="text-xs text-zinc-400 leading-relaxed">
+                <p className="text-xs text-muted-foreground leading-relaxed">
                   Need a tailored combination of automation scripts, database migration, or legacy repair? We can formulate a direct, custom milestone plan.
                 </p>
-                <div className="space-y-1.5 text-xs text-zinc-300">
+                <div className="space-y-1.5 text-xs text-foreground/80">
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
                     <span>Direct one-on-one developer consultation</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
                     <span>Honest feasibility and turnaround assessment</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
                     <span>Post-launch warranty &amp; technical updates</span>
                   </div>
                 </div>
@@ -112,7 +112,7 @@ export default function ServicesPage() {
               <div className="pt-6">
                 <Link
                   href="/contact?service=Custom%20Consultation"
-                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold bg-white text-black hover:bg-zinc-200 transition-colors shadow-sm"
+                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold bg-accent text-accent-foreground hover:bg-accent-secondary transition-colors shadow-sm"
                 >
                   <span>Request Custom Consultation</span>
                   <ArrowUpRight className="w-4 h-4" />
@@ -124,11 +124,11 @@ export default function ServicesPage() {
 
         {/* 4-Step Collaboration Process */}
         <div className="space-y-6">
-          <div className="border-b border-white/10 pb-3">
-            <h2 className="font-sans font-bold text-2xl text-white tracking-tight">
+          <div className="border-b border-surface-border pb-3">
+            <h2 className="font-sans font-bold text-2xl text-foreground tracking-tight">
               How We Work Together
             </h2>
-            <span className="text-xs font-mono text-zinc-400">
+            <span className="text-xs font-mono text-muted-foreground">
               Clear, Transparent 4-Step Development Process
             </span>
           </div>
@@ -137,15 +137,15 @@ export default function ServicesPage() {
             {steps.map((step) => (
               <div
                 key={step.num}
-                className="p-5 rounded-2xl glass-panel border border-white/10 space-y-2.5"
+                className="p-5 rounded-2xl glass-panel border border-surface-border space-y-2.5"
               >
-                <span className="font-mono text-xs font-bold text-white block">
+                <span className="font-mono text-xs font-bold text-foreground block">
                   {step.num}
                 </span>
-                <h4 className="font-sans font-bold text-base text-white">
+                <h4 className="font-sans font-bold text-base text-foreground">
                   {step.title}
                 </h4>
-                <p className="text-xs text-zinc-400 leading-relaxed">
+                <p className="text-xs text-muted-foreground leading-relaxed">
                   {step.desc}
                 </p>
               </div>
@@ -154,15 +154,15 @@ export default function ServicesPage() {
         </div>
 
         {/* Project Enquiry Banner */}
-        <div className="rounded-3xl glass-panel border border-white/10 p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="rounded-3xl glass-panel border border-surface-border p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2 text-center md:text-left">
-            <span className="text-xs font-mono uppercase tracking-wider text-zinc-400 font-semibold">
+            <span className="text-xs font-mono uppercase tracking-wider text-muted-foreground font-semibold">
               Ready to Start?
             </span>
-            <h3 className="font-sans font-extrabold text-2xl sm:text-3xl text-white tracking-tight">
+            <h3 className="font-sans font-extrabold text-2xl sm:text-3xl text-foreground tracking-tight">
               Have an idea? Let&apos;s build something useful.
             </h3>
-            <p className="text-xs sm:text-sm text-zinc-400 max-w-xl">
+            <p className="text-xs sm:text-sm text-muted-foreground max-w-xl">
               Send your project outline, desired timeline, or questions. I respond personally to every enquiry within 24 hours.
             </p>
           </div>
@@ -170,7 +170,7 @@ export default function ServicesPage() {
           <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
             <Link
               href="/contact"
-              className="px-6 py-3 rounded-xl text-xs sm:text-sm font-semibold bg-white text-black hover:bg-zinc-200 transition-colors shadow-sm"
+              className="px-6 py-3 rounded-xl text-xs sm:text-sm font-semibold bg-accent text-accent-foreground hover:bg-accent-secondary transition-colors shadow-sm"
             >
               <span>Transmit Project Brief</span>
             </Link>
@@ -178,9 +178,9 @@ export default function ServicesPage() {
               href={personalData.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs sm:text-sm font-medium glass-panel border border-white/10 text-zinc-300 hover:text-white transition-colors"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs sm:text-sm font-medium glass-panel border border-surface-border text-foreground/80 hover:text-foreground transition-colors"
             >
-              <MessageSquare className="w-4 h-4 text-zinc-400" />
+              <MessageSquare className="w-4 h-4 text-muted-foreground" />
               <span>Instant WhatsApp</span>
             </a>
           </div>

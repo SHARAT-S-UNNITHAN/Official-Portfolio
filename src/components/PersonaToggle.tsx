@@ -40,15 +40,15 @@ export function PersonaSwitcher({ className = "" }: { className?: string }) {
 
   return (
     <div
-      className={`inline-flex items-center p-1 rounded-xl glass-panel border border-white/10 text-xs font-mono select-none ${className}`}
+      className={`inline-flex items-center p-1 rounded-xl glass-panel beast-border text-xs font-mono select-none ${className}`}
     >
       <button
         type="button"
         onClick={() => setMode("developer")}
         className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all duration-200 ${
           mode === "developer"
-            ? "bg-white text-black font-semibold shadow-sm"
-            : "text-zinc-400 hover:text-white"
+            ? "bg-accent text-accent-foreground font-semibold shadow-sm"
+            : "text-muted-foreground hover:text-foreground"
         }`}
       >
         <Code2 className="w-3.5 h-3.5" />
@@ -60,8 +60,8 @@ export function PersonaSwitcher({ className = "" }: { className?: string }) {
         onClick={() => setMode("freelance")}
         className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all duration-200 ${
           mode === "freelance"
-            ? "bg-white text-black font-semibold shadow-sm"
-            : "text-zinc-400 hover:text-white"
+            ? "bg-accent text-accent-foreground font-semibold shadow-sm"
+            : "text-muted-foreground hover:text-foreground"
         }`}
       >
         <Briefcase className="w-3.5 h-3.5" />

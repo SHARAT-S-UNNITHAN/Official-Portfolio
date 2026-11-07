@@ -25,7 +25,7 @@ export const personalData = {
   resume: {
     filename: "Sharat-S-Unnithan-Resume.pdf",
     path: "/documents/Sharat-S-Unnithan-Resume.pdf",
-    isPlaceholder: true, // Set to false once real resume is placed
+    isPlaceholder: false, // Real resume PDF is in place — direct download enabled
   },
   profileImage: {
     path: "/images/profile.jpg",

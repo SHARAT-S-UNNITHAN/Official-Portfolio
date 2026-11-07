@@ -28,7 +28,7 @@ export function AboutSection() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-3">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-accent/10 text-accent border border-accent/20 mb-3">
               <span>01 // Professional Narrative</span>
             </div>
             <h2 className="font-sans font-extrabold text-3xl sm:text-4xl text-foreground tracking-tight">
@@ -51,7 +51,7 @@ export function AboutSection() {
             {/* Credibility highlights */}
             <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-xl bg-surface border border-surface-border space-y-1">
-                <span className="text-xs font-mono text-emerald-400 block font-semibold">
+                <span className="text-xs font-mono text-accent block font-semibold">
                   Foundation
                 </span>
                 <h4 className="font-semibold text-foreground text-sm">
@@ -63,7 +63,7 @@ export function AboutSection() {
               </div>
 
               <div className="p-4 rounded-xl bg-surface border border-surface-border space-y-1">
-                <span className="text-xs font-mono text-emerald-400 block font-semibold">
+                <span className="text-xs font-mono text-accent block font-semibold">
                   Postgraduate Journey
                 </span>
                 <h4 className="font-semibold text-foreground text-sm">
@@ -78,7 +78,7 @@ export function AboutSection() {
 
           {/* Right Column: Key Focus Areas */}
           <div className="lg:col-span-5 space-y-3.5">
-            <span className="font-mono text-xs uppercase tracking-wider text-foreground/50 block mb-2">
+            <span className="font-mono text-xs uppercase tracking-wider text-subtle-foreground block mb-2">
               Core Technical Interests
             </span>
 
@@ -87,13 +87,13 @@ export function AboutSection() {
               return (
                 <div
                   key={idx}
-                  className="p-4 rounded-xl bg-surface border border-surface-border hover:border-emerald-500/30 transition-all duration-200 group flex items-start gap-3.5"
+                  className="p-4 rounded-xl bg-surface border border-surface-border hover:border-accent/30 transition-all duration-200 group flex items-start gap-3.5"
                 >
-                  <div className="p-2 rounded-lg bg-surface-muted text-emerald-400 group-hover:scale-105 transition-transform mt-0.5">
+                  <div className="p-2 rounded-lg bg-surface-muted text-accent group-hover:scale-105 transition-transform mt-0.5">
                     <Icon className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground text-sm group-hover:text-emerald-400 transition-colors">
+                    <h4 className="font-semibold text-foreground text-sm group-hover:text-accent transition-colors">
                       {interest.title}
                     </h4>
                     <p className="text-xs text-foreground/65 mt-0.5 leading-relaxed">
@@ -105,19 +105,19 @@ export function AboutSection() {
             })}
 
             {/* Quick Freelance Teaser */}
-            <div className="p-5 rounded-2xl bg-gradient-to-br from-emerald-500/10 via-surface to-surface-muted border border-emerald-500/25 mt-6">
+            <div className="p-5 rounded-2xl bg-gradient-to-br from-accent/10 via-surface to-surface-muted border border-accent/25 mt-6">
               <div className="flex items-center justify-between gap-3 mb-2">
-                <span className="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">
+                <span className="text-xs font-mono text-accent font-bold uppercase tracking-wider">
                   Freelance Availability
                 </span>
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                <span className="w-2 h-2 rounded-full bg-success animate-ping" />
               </div>
               <p className="text-xs text-foreground/80 leading-relaxed mb-3">
                 Need a modern website, custom web application, or business workflow system?
               </p>
               <Link
                 href="/#services"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400 hover:text-emerald-300 transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-accent hover:text-accent transition-colors"
               >
                 <span>View Freelance Offerings</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />

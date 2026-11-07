@@ -37,20 +37,20 @@ export default function ProjectsPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Header */}
         <div className="space-y-4">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-white/5 text-zinc-300 border border-white/10">
-            <FolderGit2 className="w-3.5 h-3.5 text-zinc-400" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-foreground/5 text-foreground/80 border border-surface-border">
+            <FolderGit2 className="w-3.5 h-3.5 text-muted-foreground" />
             <span>02 // Systems &amp; Code Portfolio</span>
           </div>
-          <h1 className="font-sans font-extrabold text-4xl sm:text-5xl text-white tracking-tight">
+          <h1 className="font-sans font-extrabold text-4xl sm:text-5xl text-foreground tracking-tight">
             Software Engineering Archives
           </h1>
-          <p className="text-base sm:text-lg text-zinc-400 leading-relaxed max-w-3xl">
+          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl">
             Practical full-stack software applications, machine learning algorithms, and domain-specific business systems engineered by Sharat S Unnithan.
           </p>
         </div>
 
         {/* Filter & Search Bar */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-4 rounded-2xl glass-panel border border-white/10">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-4 rounded-2xl glass-panel border border-surface-border">
           {/* Category Tabs */}
           <div className="flex flex-wrap items-center gap-2">
             {categories.map((cat) => (
@@ -60,8 +60,8 @@ export default function ProjectsPage() {
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all duration-200 ${
                   selectedCategory === cat
-                    ? "bg-white text-black font-semibold shadow-sm"
-                    : "text-zinc-400 hover:text-white hover:bg-white/[0.04]"
+                    ? "bg-accent text-accent-foreground font-semibold shadow-sm"
+                    : "text-muted-foreground hover:text-foreground hover:bg-foreground/[0.05]"
                 }`}
               >
                 {cat}
@@ -72,21 +72,21 @@ export default function ProjectsPage() {
 
           {/* Search Input */}
           <div className="relative w-full md:w-72">
-            <Search className="w-4 h-4 text-zinc-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <Search className="w-4 h-4 text-subtle-foreground absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
             <input
               type="text"
               placeholder="Filter by keyword or tech (e.g. Django, ML)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-3.5 py-2 rounded-xl bg-white/[0.03] border border-white/10 text-xs text-white placeholder:text-zinc-500 focus:outline-none focus:border-white/30 font-mono transition-colors"
+              className="w-full pl-9 pr-3.5 py-2 rounded-xl bg-foreground/[0.04] border border-surface-border text-xs text-foreground placeholder:text-subtle-foreground focus:outline-none focus:border-accent/40 font-mono transition-colors"
             />
           </div>
         </div>
 
         {/* Projects Grid */}
         {filteredProjects.length === 0 ? (
-          <div className="p-16 rounded-3xl glass-panel border border-white/10 text-center space-y-3">
-            <p className="text-zinc-400 text-sm font-mono">
+          <div className="p-16 rounded-3xl glass-panel border border-surface-border text-center space-y-3">
+            <p className="text-muted-foreground text-sm font-mono">
               No software projects matching query: &quot;{searchQuery}&quot; in category &quot;{selectedCategory}&quot;.
             </p>
             <button
@@ -94,7 +94,7 @@ export default function ProjectsPage() {
                 setSearchQuery("");
                 setSelectedCategory("All");
               }}
-              className="px-4 py-2 rounded-xl text-xs font-mono bg-white text-black font-semibold hover:bg-zinc-200"
+              className="px-4 py-2 rounded-xl text-xs font-mono bg-accent text-accent-foreground font-semibold hover:bg-accent-secondary"
             >
               Reset Filters
             </button>
@@ -108,18 +108,18 @@ export default function ProjectsPage() {
         )}
 
         {/* Case Study Notice */}
-        <div className="p-8 rounded-3xl glass-panel border border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="p-8 rounded-3xl glass-panel border border-surface-border flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-1">
-            <h4 className="font-sans font-bold text-lg text-white">
+            <h4 className="font-sans font-bold text-lg text-foreground">
               Every project includes an in-depth technical case study.
             </h4>
-            <p className="text-xs text-zinc-400">
+            <p className="text-xs text-muted-foreground">
               Click &quot;Read Case Study&quot; on any card above to explore problem statements, architectural solutions, and implemented modules.
             </p>
           </div>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-white text-black hover:bg-zinc-200 transition-colors shrink-0 shadow-sm"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-accent text-accent-foreground hover:bg-accent-secondary transition-colors shrink-0 shadow-sm"
           >
             <span>Discuss a Project</span>
             <ArrowRight className="w-3.5 h-3.5" />

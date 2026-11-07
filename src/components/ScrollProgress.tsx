@@ -24,7 +24,7 @@ export function ScrollProgress() {
       className="fixed top-0 left-0 right-0 h-[2px] z-50 bg-transparent pointer-events-none"
     >
       <div
-        className="h-full bg-gradient-to-r from-zinc-600 via-zinc-300 to-white transition-all duration-75"
+        className="h-full bg-gradient-to-r from-accent-secondary via-accent to-accent-highlight transition-all duration-75"
         style={{ width: `${scrollPercentage}%` }}
       />
     </div>

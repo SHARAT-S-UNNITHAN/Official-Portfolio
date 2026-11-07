@@ -9,9 +9,9 @@ export function CertificationsSection() {
   const [selectedCert, setSelectedCert] = useState<CertificationItem | null>(null);
 
   const issuerBadges: Record<string, { bg: string; text: string }> = {
-    Google: { bg: "bg-blue-500/10 border-blue-500/25", text: "text-blue-400" },
-    IBM: { bg: "bg-indigo-500/10 border-indigo-500/25", text: "text-indigo-400" },
-    Microsoft: { bg: "bg-teal-500/10 border-teal-500/25", text: "text-teal-400" },
+    Google: { bg: "bg-accent-secondary/10 border-accent-secondary/25", text: "text-accent-secondary" },
+    IBM: { bg: "bg-accent-secondary/10 border-accent-secondary/25", text: "text-accent-secondary" },
+    Microsoft: { bg: "bg-accent/10 border-accent/25", text: "text-accent" },
   };
 
   return (
@@ -20,7 +20,7 @@ export function CertificationsSection() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-3">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-accent/10 text-accent border border-accent/20 mb-3">
               <Award className="w-3.5 h-3.5" />
               <span>06 // Credentials &amp; Verification</span>
             </div>
@@ -37,14 +37,14 @@ export function CertificationsSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {certificationsData.map((cert) => {
             const issuerStyle = issuerBadges[cert.issuer] || {
-              bg: "bg-emerald-500/10 border-emerald-500/20",
-              text: "text-emerald-400",
+              bg: "bg-accent/10 border-accent/20",
+              text: "text-accent",
             };
 
             return (
               <div
                 key={cert.id}
-                className="rounded-2xl bg-surface border border-surface-border p-6 sm:p-7 hover:border-emerald-500/40 transition-all duration-300 hover:shadow-xl hover:shadow-emerald-500/5 flex flex-col justify-between group"
+                className="rounded-2xl bg-surface border border-surface-border p-6 sm:p-7 hover:border-accent/40 transition-all duration-300 hover:shadow-xl hover:shadow-accent/5 flex flex-col justify-between group"
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between gap-3">
@@ -53,17 +53,17 @@ export function CertificationsSection() {
                     >
                       {cert.issuer}
                     </span>
-                    <span className="flex items-center gap-1 text-[11px] font-mono text-emerald-400">
+                    <span className="flex items-center gap-1 text-[11px] font-mono text-accent">
                       <ShieldCheck className="w-3.5 h-3.5" />
                       <span>Verified</span>
                     </span>
                   </div>
 
                   <div>
-                    <h3 className="font-sans font-bold text-lg text-foreground tracking-tight group-hover:text-emerald-400 transition-colors">
+                    <h3 className="font-sans font-bold text-lg text-foreground tracking-tight group-hover:text-accent transition-colors">
                       {cert.title}
                     </h3>
-                    <p className="text-xs font-mono text-foreground/50 mt-1">
+                    <p className="text-xs font-mono text-subtle-foreground mt-1">
                       Issuer: {cert.issuer} • {cert.issueDate}
                     </p>
                   </div>
@@ -74,7 +74,7 @@ export function CertificationsSection() {
 
                   {/* Skills Acquired */}
                   <div className="space-y-2 pt-2">
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-foreground/50 block">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-subtle-foreground block">
                       Competencies Covered
                     </span>
                     <div className="flex flex-wrap gap-1.5">
@@ -96,19 +96,19 @@ export function CertificationsSection() {
                       href={cert.verificationUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400 hover:text-emerald-300 transition-colors"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-accent hover:text-accent transition-colors"
                     >
                       <span>Verify Credential</span>
                       <ExternalLink className="w-3.5 h-3.5" />
                     </a>
                   ) : (
-                    <span className="text-xs font-mono text-foreground/50">
+                    <span className="text-xs font-mono text-subtle-foreground">
                       Certificate record verified
                     </span>
                   )}
 
                   {cert.credentialId && (
-                    <span className="text-[10px] font-mono text-foreground/40">
+                    <span className="text-[10px] font-mono text-subtle-foreground">
                       ID: {cert.credentialId}
                     </span>
                   )}

@@ -26,18 +26,18 @@ export function LiveClock({ className = "" }: { className?: string }) {
 
   return (
     <div
-      className={`inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full glass-panel text-xs font-mono text-zinc-300 border border-white/10 ${className}`}
+      className={`inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full glass-panel text-xs font-mono text-foreground/80 beast-border ${className}`}
     >
       <span className="relative flex h-2 w-2">
-        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75" />
+        <span className="relative inline-flex rounded-full h-2 w-2 bg-success" />
       </span>
-      <span className="flex items-center gap-1 text-zinc-400">
-        <MapPin className="w-3 h-3 text-zinc-400" />
+      <span className="flex items-center gap-1 text-muted-foreground">
+        <MapPin className="w-3 h-3 text-muted-foreground" />
         <span>Kayamkulam, IN</span>
       </span>
-      <span className="text-zinc-600">•</span>
-      <span className="text-white font-medium">{timeStr || "IST"}</span>
+      <span className="text-subtle-foreground">•</span>
+      <span className="text-foreground font-medium">{timeStr || "IST"}</span>
     </div>
   );
 }

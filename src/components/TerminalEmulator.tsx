@@ -191,49 +191,49 @@ Forwarding you to the project enquiry interface...`,
   };
 
   return (
-    <div className="w-full rounded-2xl glass-panel border border-white/10 shadow-2xl overflow-hidden font-mono text-xs text-left">
+    <div className="w-full rounded-2xl glass-panel border border-surface-border shadow-2xl overflow-hidden font-mono text-xs text-left">
       {/* Terminal Title Bar */}
-      <div className="flex items-center justify-between px-4 py-2.5 border-b border-white/10 bg-white/[0.02]">
+      <div className="flex items-center justify-between px-4 py-2.5 border-b border-surface-border bg-foreground/[0.03]">
         <div className="flex items-center gap-2">
-          <div className="w-2.5 h-2.5 rounded-full bg-zinc-600" />
-          <div className="w-2.5 h-2.5 rounded-full bg-zinc-600" />
-          <div className="w-2.5 h-2.5 rounded-full bg-zinc-600" />
-          <span className="ml-2 text-[11px] text-zinc-400 flex items-center gap-1.5 font-medium">
-            <TerminalIcon className="w-3.5 h-3.5 text-zinc-300" />
+          <div className="w-2.5 h-2.5 rounded-full bg-subtle-foreground" />
+          <div className="w-2.5 h-2.5 rounded-full bg-subtle-foreground" />
+          <div className="w-2.5 h-2.5 rounded-full bg-subtle-foreground" />
+          <span className="ml-2 text-[11px] text-muted-foreground flex items-center gap-1.5 font-medium">
+            <TerminalIcon className="w-3.5 h-3.5 text-foreground/80" />
             <span>sharat@system:~ (zsh)</span>
           </span>
         </div>
 
-        <div className="flex items-center gap-2 text-[10px] text-zinc-500">
+        <div className="flex items-center gap-2 text-[10px] text-subtle-foreground">
           <span>interactive cli</span>
         </div>
       </div>
 
       {/* Terminal Log Canvas */}
       <div
-        className="p-4 sm:p-5 h-72 sm:h-80 overflow-y-auto space-y-2.5 bg-black/60"
+        className="p-4 sm:p-5 h-72 sm:h-80 overflow-y-auto space-y-2.5 bg-surface-muted"
         onClick={() => inputRef.current?.focus()}
       >
         {lines.map((line) => (
           <div key={line.id} className="space-y-1">
             {line.type === "command" && (
-              <div className="flex items-center gap-2 text-white font-medium">
-                <span className="text-zinc-500">❯</span>
+              <div className="flex items-center gap-2 text-foreground font-medium">
+                <span className="text-subtle-foreground">❯</span>
                 <span>{line.text}</span>
               </div>
             )}
             {line.type === "system" && (
-              <div className="text-zinc-400 text-[11px] leading-relaxed">
+              <div className="text-muted-foreground text-[11px] leading-relaxed">
                 {line.text}
               </div>
             )}
             {line.type === "output" && (
-              <pre className="text-zinc-300 whitespace-pre-wrap leading-relaxed text-[11px] sm:text-xs">
+              <pre className="text-foreground/80 whitespace-pre-wrap leading-relaxed text-[11px] sm:text-xs">
                 {line.text}
               </pre>
             )}
             {line.type === "error" && (
-              <div className="text-rose-400 text-[11px]">{line.text}</div>
+              <div className="text-danger text-[11px]">{line.text}</div>
             )}
             {line.links && (
               <div className="flex flex-wrap gap-2 pt-1">
@@ -241,7 +241,7 @@ Forwarding you to the project enquiry interface...`,
                   <a
                     key={idx}
                     href={link.href}
-                    className="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-white/5 border border-white/10 text-white hover:bg-white/10 text-[10px] transition-colors"
+                    className="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-foreground/5 border border-surface-border text-foreground hover:bg-foreground/10 text-[10px] transition-colors"
                   >
                     <span>{link.label}</span>
                     <span>→</span>
@@ -255,8 +255,8 @@ Forwarding you to the project enquiry interface...`,
       </div>
 
       {/* Input Prompt */}
-      <div className="p-3 border-t border-white/10 bg-white/[0.02] flex items-center gap-2">
-        <span className="text-white font-bold">❯</span>
+      <div className="p-3 border-t border-surface-border bg-foreground/[0.03] flex items-center gap-2">
+        <span className="text-foreground font-bold">❯</span>
         <input
           ref={inputRef}
           type="text"
@@ -264,11 +264,11 @@ Forwarding you to the project enquiry interface...`,
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Type command ('help', 'projects', 'skills', 'hire')..."
-          className="w-full bg-transparent text-white placeholder:text-zinc-600 focus:outline-none text-xs"
+          className="w-full bg-transparent text-foreground placeholder:text-subtle-foreground focus:outline-none text-xs"
         />
         <button
           onClick={() => handleCommand(input)}
-          className="p-1 rounded text-zinc-500 hover:text-white transition-colors"
+          className="p-1 rounded text-subtle-foreground hover:text-foreground transition-colors"
           title="Execute"
         >
           <CornerDownLeft className="w-3.5 h-3.5" />
@@ -276,14 +276,14 @@ Forwarding you to the project enquiry interface...`,
       </div>
 
       {/* Quick Suggestion Pills */}
-      <div className="px-3 py-2 border-t border-white/5 bg-white/[0.01] flex flex-wrap items-center gap-1.5 text-[10px]">
-        <span className="text-zinc-500 mr-1">Quick Run:</span>
+      <div className="px-3 py-2 border-t border-surface-border/60 bg-foreground/[0.02] flex flex-wrap items-center gap-1.5 text-[10px]">
+        <span className="text-subtle-foreground mr-1">Quick Run:</span>
         {["help", "whoami", "skills", "projects", "services", "contact", "clear"].map(
           (cmd) => (
             <button
               key={cmd}
               onClick={() => handleCommand(cmd)}
-              className="px-2 py-0.5 rounded border border-white/10 hover:border-white/30 hover:text-white text-zinc-400 transition-colors"
+              className="px-2 py-0.5 rounded border border-surface-border hover:border-accent/40 hover:text-foreground text-muted-foreground transition-colors"
             >
               {cmd}
             </button>

@@ -11,27 +11,92 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        /*
+         * Semantic palette tokens. Each resolves to a space-separated RGB
+         * variable in globals.css, which keeps opacity modifiers working.
+         */
+        background: "rgb(var(--background) / <alpha-value>)",
+        foreground: "rgb(var(--foreground) / <alpha-value>)",
         surface: {
-          DEFAULT: "var(--surface)",
-          muted: "var(--surface-muted)",
-          card: "var(--surface-card)",
-          border: "var(--surface-border)",
-          glow: "var(--surface-glow)",
+          DEFAULT: "rgb(var(--surface) / <alpha-value>)",
+          muted: "rgb(var(--surface-muted) / <alpha-value>)",
+          card: "rgb(var(--surface-card) / <alpha-value>)",
+          elevated: "rgb(var(--surface-elevated) / <alpha-value>)",
+          border: "rgb(var(--surface-border) / <alpha-value>)",
+          glow: "rgb(var(--surface-glow) / <alpha-value>)",
         },
-        titanium: {
-          50: "#fafafa",
-          100: "#f4f4f5",
-          200: "#e4e4e7",
-          300: "#d4d4d8",
-          400: "#a1a1aa",
-          500: "#71717a",
-          600: "#52525b",
-          700: "#3f3f46",
-          800: "#27272a",
-          900: "#18181b",
-          950: "#09090b",
+        accent: {
+          DEFAULT: "rgb(var(--accent) / <alpha-value>)",
+          secondary: "rgb(var(--accent-secondary) / <alpha-value>)",
+          highlight: "rgb(var(--accent-highlight) / <alpha-value>)",
+          foreground: "rgb(var(--accent-foreground) / <alpha-value>)",
+        },
+        muted: {
+          DEFAULT: "rgb(var(--surface-muted) / <alpha-value>)",
+          foreground: "rgb(var(--muted-foreground) / <alpha-value>)",
+        },
+        subtle: {
+          foreground: "rgb(var(--subtle-foreground) / <alpha-value>)",
+        },
+        success: "rgb(var(--success) / <alpha-value>)",
+        warning: "rgb(var(--warning) / <alpha-value>)",
+        danger: "rgb(var(--danger) / <alpha-value>)",
+
+        /*
+         * Legacy palette names retained for compatibility, remapped to the
+         * premium ink / champagne / ivory system.
+         */
+        navy: {
+          50: "#f2f3f5",
+          100: "#e4e6ea",
+          200: "#c8ccd4",
+          300: "#a6acb8",
+          400: "#828b9a",
+          500: "#626c7e",
+          600: "#4a5262",
+          700: "#2f3542",
+          800: "#1b222c",
+          900: "#11151c",
+          950: "#0a0c10",
+        },
+        leather: {
+          50: "#fbf8f1",
+          100: "#f6f0e2",
+          200: "#ece0c6",
+          300: "#e2ca94",
+          400: "#c9a961",
+          500: "#b8935a",
+          600: "#a07b42",
+          700: "#8a6a2f",
+          800: "#6d5426",
+          900: "#503d1c",
+          950: "#2a2010",
+        },
+        coral: {
+          50: "#fdfbf6",
+          100: "#faf6ea",
+          200: "#f5ecd4",
+          300: "#f2e4b8",
+          400: "#e9d79f",
+          500: "#e2ca94",
+          600: "#d6b062",
+          700: "#c9a961",
+          800: "#b8935a",
+          900: "#a07b42",
+          950: "#8a6a2f",
+        },
+        eggshell: {
+          50: "#fdfcf9",
+          100: "#fbf9f4",
+          200: "#f8f5ee",
+          300: "#f5f1e9",
+          400: "#f2ede3",
+          500: "#efe9de",
+          600: "#ece5d8",
+          700: "#e8e1d3",
+          800: "#e5ddce",
+          900: "#e2d9c9",
+          950: "#ede9e1",
         },
       },
       fontFamily: {

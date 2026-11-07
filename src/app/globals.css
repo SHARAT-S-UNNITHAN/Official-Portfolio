@@ -4,28 +4,51 @@
 
 @layer base {
   :root {
-    --background: #fbfbfc;
-    --foreground: #09090b;
-    --surface: #ffffff;
-    --surface-muted: #f4f4f6;
-    --surface-card: #ffffff;
-    --surface-border: #e4e4e7;
-    --surface-glow: rgba(0, 0, 0, 0.04);
-    --accent: #18181b;
-    --accent-foreground: #ffffff;
+    /*
+     * Premium light palette — warm alabaster, ink text, deep champagne gold.
+     * Values are space-separated RGB channels so Tailwind's opacity modifiers
+     * (e.g. bg-accent/10, border-surface-border/60) continue to work.
+     */
+    --background: 247 244 238; /* #F7F4EE warm alabaster */
+    --foreground: 24 27 32; /* #181B20 soft ink */
+    --surface: 255 255 255;
+    --surface-muted: 240 236 227; /* #F0ECE3 parchment */
+    --surface-card: 255 255 255;
+    --surface-elevated: 250 248 243; /* #FAF8F3 */
+    --surface-border: 226 221 211; /* #E2DDD3 hairline */
+    --surface-glow: 176 141 74; /* #B08D4A */
+    --muted-foreground: 92 99 110; /* #5C636E */
+    --subtle-foreground: 108 115 125; /* #6C737D */
+    --accent: 124 94 40; /* #7C5E28 deep antique gold */
+    --accent-secondary: 100 74 30; /* #644A1E */
+    --accent-highlight: 154 120 58; /* #9A783A */
+    --accent-foreground: 253 251 246; /* #FDFBF6 ivory on gold */
+    --success: 79 122 92; /* #4F7A5C muted sage */
+    --warning: 154 122 50; /* #9A7A32 antique amber */
+    --danger: 166 72 62; /* #A6483E muted claret */
   }
 
   .dark {
-    /* Ultra-luxurious Matte Titanium & Obsidian */
-    --background: #060608;
-    --foreground: #f4f4f5;
-    --surface: #0e0e12;
-    --surface-muted: #15151a;
-    --surface-card: #101015;
-    --surface-border: rgba(255, 255, 255, 0.08);
-    --surface-glow: rgba(255, 255, 255, 0.03);
-    --accent: #ffffff;
-    --accent-foreground: #060608;
+    /*
+     * Premium dark palette — deep ink, warm ivory text, champagne gold.
+     */
+    --background: 10 12 16; /* #0A0C10 near-black ink */
+    --foreground: 237 233 225; /* #EDE9E1 warm ivory */
+    --surface: 17 21 28; /* #11151C */
+    --surface-muted: 23 29 38; /* #171D26 */
+    --surface-card: 18 23 30; /* #12171E */
+    --surface-elevated: 27 34 44; /* #1B222C */
+    --surface-border: 42 48 58; /* #2A303A hairline */
+    --surface-glow: 201 169 97; /* #C9A961 */
+    --muted-foreground: 150 158 170; /* #969EAA */
+    --subtle-foreground: 113 121 133; /* #717985 */
+    --accent: 201 169 97; /* #C9A961 champagne gold */
+    --accent-secondary: 226 202 148; /* #E2CA94 */
+    --accent-highlight: 242 228 184; /* #F2E4B8 */
+    --accent-foreground: 18 14 8; /* #120E08 ink on gold */
+    --success: 127 176 138; /* #7FB08A */
+    --warning: 214 176 98; /* #D6B062 */
+    --danger: 214 128 118; /* #D68076 */
   }
 
   html {
@@ -34,73 +57,80 @@
   }
 
   body {
-    background-color: var(--background);
-    color: var(--foreground);
+    background-color: rgb(var(--background));
+    color: rgb(var(--foreground));
     min-height: 100vh;
     overflow-x: hidden;
     letter-spacing: -0.01em;
   }
 
   ::selection {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #ffffff;
+    background-color: rgb(var(--accent) / 0.3);
+    color: rgb(var(--foreground));
   }
 }
 
-/* Subtle, whisper-thin scrollbar */
+/* Champagne gold scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--background);
+  background: rgb(var(--background));
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgb(var(--accent) / 0.35);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: rgb(var(--accent) / 0.6);
 }
 
-/* Restrained luxury architectural grid */
-.cyber-grid {
+/* Subtle architectural grid with a faint gold tint */
+.beast-grid {
   background-size: 48px 48px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-image:
+    linear-gradient(to right, rgb(var(--accent) / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(var(--accent) / 0.05) 1px, transparent 1px);
 }
 
-.light .cyber-grid {
-  background-image: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+.light .beast-grid {
+  background-image:
+    linear-gradient(to right, rgb(var(--accent) / 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(var(--accent) / 0.08) 1px, transparent 1px);
 }
 
-/* Luxury subtle vignette */
+/* Restrained gold aurora vignette */
 .aurora-glow {
-  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 40%, transparent 70%);
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgb(var(--accent) / 0.09) 0%,
+    rgb(var(--accent) / 0.03) 40%,
+    transparent 70%
+  );
 }
 
-/* Architectural glass panel with titanium border */
+/* Glass panel — adapts to both premium themes */
 .glass-panel {
-  background: rgba(14, 14, 18, 0.72);
+  background: rgb(var(--surface) / 0.78);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgb(var(--surface-border) / 0.9);
 }
 
-.light .glass-panel {
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(0, 0, 0, 0.07);
+/* Accent border utilities */
+.beast-border {
+  border-color: rgb(var(--surface-border));
 }
 
-/* Titanium sheen */
-.titanium-border {
-  border-color: rgba(255, 255, 255, 0.1);
+.beast-border:hover {
+  border-color: rgb(var(--accent) / 0.45);
 }
 
-.titanium-border:hover {
-  border-color: rgba(255, 255, 255, 0.22);
+/* Gold highlight utilities */
+.gold-highlight {
+  color: rgb(var(--accent));
+}
+
+.gold-highlight-bg {
+  background-color: rgb(var(--accent));
 }
