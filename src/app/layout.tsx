@@ -74,7 +74,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark font-sans" suppressHydrationWarning>
-      <body className="antialiased bg-background text-foreground selection:bg-emerald-500/20 selection:text-emerald-400">
+      <body className="antialiased bg-background text-foreground selection:bg-white/20 selection:text-white">
         <ThemeProvider>
           <ScrollProgress />
           <CommandMenu />

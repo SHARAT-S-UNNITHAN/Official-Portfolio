@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { Terminal as TerminalIcon, Sparkles, CornerDownLeft, Maximize2, Minimize2 } from "lucide-react";
+import { Terminal as TerminalIcon, CornerDownLeft } from "lucide-react";
 import { personalData } from "@/data/personal";
 import { projectsData } from "@/data/projects";
 
@@ -20,7 +20,7 @@ export function TerminalEmulator() {
     {
       id: "init-1",
       type: "system",
-      text: "⚡ SHARAT S UNNITHAN [Aether Terminal v2.4 - Ready]",
+      text: "⚡ SHARAT S UNNITHAN [Developer Console v2.4 - Ready]",
     },
     {
       id: "init-2",
@@ -55,9 +55,9 @@ export function TerminalEmulator() {
           id: `out-${Date.now()}`,
           type: "output",
           text: `Available Commands:
-  • whoami     - Display developer background & credentials
-  • skills     - List backend, Python, Django & web proficiencies
-  • projects   - Enumerate key software projects & architectures
+  • whoami     - Developer profile & academic background
+  • skills     - Python, Django, database & web competencies
+  • projects   - Key software architectures & applications
   • services   - Freelance digital solutions & capabilities
   • contact    - Direct communication channels (WhatsApp/Email)
   • hire       - Instant project enquiry pipeline
@@ -191,44 +191,44 @@ Forwarding you to the project enquiry interface...`,
   };
 
   return (
-    <div className="w-full rounded-2xl glass-panel border border-surface-border shadow-2xl overflow-hidden font-mono text-xs text-left">
+    <div className="w-full rounded-2xl glass-panel border border-white/10 shadow-2xl overflow-hidden font-mono text-xs text-left">
       {/* Terminal Title Bar */}
-      <div className="flex items-center justify-between px-4 py-2.5 border-b border-surface-border bg-surface-muted/40">
+      <div className="flex items-center justify-between px-4 py-2.5 border-b border-white/10 bg-white/[0.02]">
         <div className="flex items-center gap-2">
-          <div className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
-          <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
-          <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
-          <span className="ml-2 text-[11px] text-foreground/50 flex items-center gap-1.5 font-semibold">
-            <TerminalIcon className="w-3.5 h-3.5 text-cyan-400" />
-            <span>sharat@core-aether:~ (zsh)</span>
+          <div className="w-2.5 h-2.5 rounded-full bg-zinc-600" />
+          <div className="w-2.5 h-2.5 rounded-full bg-zinc-600" />
+          <div className="w-2.5 h-2.5 rounded-full bg-zinc-600" />
+          <span className="ml-2 text-[11px] text-zinc-400 flex items-center gap-1.5 font-medium">
+            <TerminalIcon className="w-3.5 h-3.5 text-zinc-300" />
+            <span>sharat@system:~ (zsh)</span>
           </span>
         </div>
 
-        <div className="flex items-center gap-2 text-[10px] text-foreground/40">
+        <div className="flex items-center gap-2 text-[10px] text-zinc-500">
           <span>interactive cli</span>
         </div>
       </div>
 
       {/* Terminal Log Canvas */}
       <div
-        className="p-4 sm:p-5 h-72 sm:h-80 overflow-y-auto space-y-2.5 bg-black/40"
+        className="p-4 sm:p-5 h-72 sm:h-80 overflow-y-auto space-y-2.5 bg-black/60"
         onClick={() => inputRef.current?.focus()}
       >
         {lines.map((line) => (
           <div key={line.id} className="space-y-1">
             {line.type === "command" && (
-              <div className="flex items-center gap-2 text-cyan-400 font-semibold">
-                <span className="text-foreground/40">❯</span>
+              <div className="flex items-center gap-2 text-white font-medium">
+                <span className="text-zinc-500">❯</span>
                 <span>{line.text}</span>
               </div>
             )}
             {line.type === "system" && (
-              <div className="text-foreground/50 text-[11px] leading-relaxed">
+              <div className="text-zinc-400 text-[11px] leading-relaxed">
                 {line.text}
               </div>
             )}
             {line.type === "output" && (
-              <pre className="text-foreground/85 whitespace-pre-wrap leading-relaxed text-[11px] sm:text-xs">
+              <pre className="text-zinc-300 whitespace-pre-wrap leading-relaxed text-[11px] sm:text-xs">
                 {line.text}
               </pre>
             )}
@@ -241,7 +241,7 @@ Forwarding you to the project enquiry interface...`,
                   <a
                     key={idx}
                     href={link.href}
-                    className="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/20 text-[10px] transition-colors"
+                    className="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-white/5 border border-white/10 text-white hover:bg-white/10 text-[10px] transition-colors"
                   >
                     <span>{link.label}</span>
                     <span>→</span>
@@ -255,8 +255,8 @@ Forwarding you to the project enquiry interface...`,
       </div>
 
       {/* Input Prompt */}
-      <div className="p-3 border-t border-surface-border bg-surface-muted/30 flex items-center gap-2">
-        <span className="text-cyan-400 font-bold">❯</span>
+      <div className="p-3 border-t border-white/10 bg-white/[0.02] flex items-center gap-2">
+        <span className="text-white font-bold">❯</span>
         <input
           ref={inputRef}
           type="text"
@@ -264,11 +264,11 @@ Forwarding you to the project enquiry interface...`,
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Type command ('help', 'projects', 'skills', 'hire')..."
-          className="w-full bg-transparent text-foreground placeholder:text-foreground/30 focus:outline-none text-xs"
+          className="w-full bg-transparent text-white placeholder:text-zinc-600 focus:outline-none text-xs"
         />
         <button
           onClick={() => handleCommand(input)}
-          className="p-1 rounded text-foreground/40 hover:text-cyan-400 transition-colors"
+          className="p-1 rounded text-zinc-500 hover:text-white transition-colors"
           title="Execute"
         >
           <CornerDownLeft className="w-3.5 h-3.5" />
@@ -276,14 +276,14 @@ Forwarding you to the project enquiry interface...`,
       </div>
 
       {/* Quick Suggestion Pills */}
-      <div className="px-3 py-2 border-t border-surface-border/40 bg-surface/50 flex flex-wrap items-center gap-1.5 text-[10px]">
-        <span className="text-foreground/40 mr-1">Quick Run:</span>
+      <div className="px-3 py-2 border-t border-white/5 bg-white/[0.01] flex flex-wrap items-center gap-1.5 text-[10px]">
+        <span className="text-zinc-500 mr-1">Quick Run:</span>
         {["help", "whoami", "skills", "projects", "services", "contact", "clear"].map(
           (cmd) => (
             <button
               key={cmd}
               onClick={() => handleCommand(cmd)}
-              className="px-2 py-0.5 rounded border border-surface-border hover:border-cyan-500/40 hover:text-cyan-400 text-foreground/70 transition-colors"
+              className="px-2 py-0.5 rounded border border-white/10 hover:border-white/30 hover:text-white text-zinc-400 transition-colors"
             >
               {cmd}
             </button>

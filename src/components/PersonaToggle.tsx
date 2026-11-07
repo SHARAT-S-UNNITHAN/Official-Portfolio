@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState } from "react";
-import { Code2, Briefcase, Sparkles } from "lucide-react";
+import { Code2, Briefcase } from "lucide-react";
 
 export type PersonaMode = "developer" | "freelance";
 
@@ -40,19 +40,19 @@ export function PersonaSwitcher({ className = "" }: { className?: string }) {
 
   return (
     <div
-      className={`inline-flex items-center p-1 rounded-xl glass-panel border border-surface-border text-xs font-mono select-none ${className}`}
+      className={`inline-flex items-center p-1 rounded-xl glass-panel border border-white/10 text-xs font-mono select-none ${className}`}
     >
       <button
         type="button"
         onClick={() => setMode("developer")}
         className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all duration-200 ${
           mode === "developer"
-            ? "bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 font-semibold shadow-sm"
-            : "text-foreground/60 hover:text-foreground"
+            ? "bg-white text-black font-semibold shadow-sm"
+            : "text-zinc-400 hover:text-white"
         }`}
       >
         <Code2 className="w-3.5 h-3.5" />
-        <span>Engineer Mode</span>
+        <span>Engineer</span>
       </button>
 
       <button
@@ -60,8 +60,8 @@ export function PersonaSwitcher({ className = "" }: { className?: string }) {
         onClick={() => setMode("freelance")}
         className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all duration-200 ${
           mode === "freelance"
-            ? "bg-purple-500/15 text-purple-300 border border-purple-500/30 font-semibold shadow-sm"
-            : "text-foreground/60 hover:text-foreground"
+            ? "bg-white text-black font-semibold shadow-sm"
+            : "text-zinc-400 hover:text-white"
         }`}
       >
         <Briefcase className="w-3.5 h-3.5" />

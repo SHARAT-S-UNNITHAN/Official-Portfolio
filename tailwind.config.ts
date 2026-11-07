@@ -13,13 +13,6 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        canvas: {
-          50: "#f8fafc",
-          100: "#f1f5f9",
-          800: "#0b0f17",
-          900: "#06090e",
-          950: "#020408",
-        },
         surface: {
           DEFAULT: "var(--surface)",
           muted: "var(--surface-muted)",
@@ -27,12 +20,18 @@ const config: Config = {
           border: "var(--surface-border)",
           glow: "var(--surface-glow)",
         },
-        neon: {
-          cyan: "#00f0ff",
-          blue: "#3b82f6",
-          purple: "#a855f7",
-          indigo: "#6366f1",
-          emerald: "#10b981",
+        titanium: {
+          50: "#fafafa",
+          100: "#f4f4f5",
+          200: "#e4e4e7",
+          300: "#d4d4d8",
+          400: "#a1a1aa",
+          500: "#71717a",
+          600: "#52525b",
+          700: "#3f3f46",
+          800: "#27272a",
+          900: "#18181b",
+          950: "#09090b",
         },
       },
       fontFamily: {
@@ -57,23 +56,7 @@ const config: Config = {
         ],
       },
       animation: {
-        "pulse-glow": "pulseGlow 3s ease-in-out infinite",
-        "float": "float 6s ease-in-out infinite",
-        "terminal-cursor": "cursorBlink 1s infinite",
-      },
-      keyframes: {
-        pulseGlow: {
-          "0%, 100%": { opacity: "0.4", transform: "scale(1)" },
-          "50%": { opacity: "0.8", transform: "scale(1.05)" },
-        },
-        float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-8px)" },
-        },
-        cursorBlink: {
-          "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0" },
-        },
+        "subtle-pulse": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
       },
     },
   },
