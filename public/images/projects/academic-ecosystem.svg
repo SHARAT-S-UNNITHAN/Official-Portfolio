@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="acadBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1d" />
+      <stop offset="100%" stop-color="#081427" />
+    </linearGradient>
+    <linearGradient id="blueGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#60a5fa" />
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#acadBg)" />
+
+  <!-- Frame -->
+  <rect x="70" y="40" width="660" height="420" rx="16" fill="#0c1524" fill-opacity="0.8" stroke="#1d2e4a" stroke-width="1.5" />
+  <circle cx="100" cy="70" r="6" fill="#3b82f6" opacity="0.8"/>
+  <circle cx="120" cy="70" r="6" fill="#60a5fa" opacity="0.8"/>
+  <circle cx="140" cy="70" r="6" fill="#93c5fd" opacity="0.8"/>
+  <text x="170" y="75" fill="#93c5fd" font-family="monospace" font-size="13" font-weight="600">ACADEMIC_ECOSYSTEM // GEOFENCE_VALIDATOR</text>
+
+  <!-- Concentric Geofence Rings -->
+  <g transform="translate(400, 260)">
+    <circle cx="0" cy="0" r="170" fill="none" stroke="#1e3a6a" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.5"/>
+    <circle cx="0" cy="0" r="125" fill="#1e3a8a" fill-opacity="0.1" stroke="#2563eb" stroke-width="1.5" opacity="0.7"/>
+    <circle cx="0" cy="0" r="80" fill="#3b82f6" fill-opacity="0.15" stroke="#60a5fa" stroke-width="2"/>
+    <circle cx="0" cy="0" r="25" fill="#3b82f6" fill-opacity="0.3" stroke="#93c5fd" stroke-width="2"/>
+    <circle cx="0" cy="0" r="8" fill="#60a5fa" />
+
+    <!-- Orbiting presence markers -->
+    <circle cx="55" cy="-45" r="5" fill="#10b981" />
+    <circle cx="-60" cy="30" r="5" fill="#10b981" />
+    <circle cx="20" cy="65" r="5" fill="#10b981" />
+    <circle cx="-35" cy="-55" r="5" fill="#10b981" />
+    <circle cx="100" cy="40" r="5" fill="#ef4444" />
+    <line x1="0" y1="0" x2="55" y2="-45" stroke="#3b82f6" stroke-width="1" stroke-dasharray="3,3" opacity="0.7"/>
+    <line x1="0" y1="0" x2="-60" y2="30" stroke="#3b82f6" stroke-width="1" stroke-dasharray="3,3" opacity="0.7"/>
+  </g>
+
+  <!-- Metrics cards -->
+  <rect x="100" y="340" width="180" height="85" rx="10" fill="#0f1f38" stroke="#1d3557" stroke-width="1"/>
+  <text x="120" y="370" fill="#93c5fd" font-family="sans-serif" font-size="12">Campus Perimeter</text>
+  <text x="120" y="405" fill="#ffffff" font-family="monospace" font-size="20" font-weight="bold">BOUNDED: OK</text>
+
+  <rect x="520" y="340" width="180" height="85" rx="10" fill="#0f1f38" stroke="#1d3557" stroke-width="1"/>
+  <text x="540" y="370" fill="#93c5fd" font-family="sans-serif" font-size="12">Attendance Integrity</text>
+  <text x="540" y="405" fill="#10b981" font-family="monospace" font-size="20" font-weight="bold">99.8% VERIFIED</text>
+</svg>
